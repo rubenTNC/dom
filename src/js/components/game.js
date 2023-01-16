@@ -6,7 +6,7 @@ export default class Game {
     this.render();
     this.addStyles();
     this.addGoblin();
-    this.move();
+    // this.move();
   }
   markup() {
     let board = document.createElement("div");
@@ -43,13 +43,13 @@ export default class Game {
   addGoblin() {
     this.squres[
       this.randomNumbers
-    ].innerHTML = `<img src="https://i.yapx.ru/VWEXi.png">`;
+    ].innerHTML = `<img src="../goblin.png">`;
   }
   move() {
     setInterval(() => {
       let count;
       for (let item of this.squres) {
-        if (item.innerHTML === `<img src="https://i.yapx.ru/VWEXi.png">`) {
+        if (item.innerHTML === `<img src="goblin.png">`) {
           count = this.squres.indexOf(item);
         }
         if (count !== this.randomNumbers) {

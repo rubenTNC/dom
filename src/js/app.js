@@ -1,3 +1,4 @@
 import Game from "./components/game";
-export const selector = document.querySelector(".app");
+const selector = document.querySelector(".app");
+export default selector
 new Game(selector, 4, 1);
