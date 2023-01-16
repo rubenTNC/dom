@@ -6,7 +6,7 @@ export default class Game {
     this.render();
     this.addStyles();
     this.addGoblin();
-    // this.move();
+    this.move();
   }
   markup() {
     let board = document.createElement("div");
