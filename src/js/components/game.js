@@ -6,6 +6,7 @@ export default class Game {
     this.render();
     this.addStyles();
     this.addGoblin();
+    this.move();
   }
   markup() {
     let board = document.createElement("div");
@@ -26,11 +27,13 @@ export default class Game {
   get widthSqure() {
     return this.widthBoard / this.fieldSize - this.border * 2;
   }
+  get squres() {
+    return Array.from(this.selector.querySelectorAll(".squre"));
+  }
   addStyles() {
-    const squres = Array.from(this.selector.querySelectorAll(".squre"));
-    squres.forEach((item) => (item.style.width = `${this.widthSqure}px`));
-    squres.forEach((item) => (item.style.height = `${this.widthSqure}px`));
-    squres.forEach(
+    this.squres.forEach((item) => (item.style.width = `${this.widthSqure}px`));
+    this.squres.forEach((item) => (item.style.height = `${this.widthSqure}px`));
+    this.squres.forEach(
       (item) => (item.style.border = `${this.border}px solid black`)
     );
   }
@@ -38,9 +41,22 @@ export default class Game {
     return Math.floor(Math.random() * (Math.pow(this.fieldSize, 2) - 0));
   }
   addGoblin() {
-    const squres = Array.from(this.selector.querySelectorAll(".squre"));
-    squres[
+    this.squres[
       this.randomNumbers
-    ].innerHTML = `<img src="goblin.png" alt="goblin">`;
+    ].innerHTML = `<img src="https://i.yapx.ru/VWEXi.png">`;
+  }
+  move() {
+    setInterval(() => {
+      let count;
+      for (let item of this.squres) {
+        if (item.innerHTML === `<img src="https://i.yapx.ru/VWEXi.png">`) {
+          count = this.squres.indexOf(item);
+        }
+        if (count !== this.randomNumbers) {
+          this.squres.forEach((item) => (item.innerHTML = ""));
+          this.addGoblin();
+        }
+      }
+    }, 1000);
   }
 }
