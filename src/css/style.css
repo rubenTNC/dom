@@ -1,0 +1,21 @@
+body {
+    color: #999;
+
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.game {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.squre {
+    height: 50px;
+}
